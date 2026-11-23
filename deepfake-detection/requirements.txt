@@ -1,0 +1,8 @@
+flask
+pillow
+numpy
+opencv-python-headless
+
+# Only needed for MODEL mode (real predictions). Needs Python 3.9 - 3.12.
+# If it fails to install, delete this line: the app still runs in DEMO mode.
+tensorflow

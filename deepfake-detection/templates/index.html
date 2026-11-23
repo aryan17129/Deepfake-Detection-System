@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deepfake Detection System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>🛡️ Deepfake Detection System</h1>
+      <p class="subtitle">
+        Deepfakes are images or videos created or altered by AI to look real.
+        Upload a file below to check whether it looks REAL or FAKE.
+      </p>
+    </header>
+
+    <!-- Mode banner: tells the user if results are real or simulated -->
+    {% if mode == 'demo' %}
+    <div class="banner demo">
+      ⚠️ <strong>DEMO MODE</strong> – no trained model found. Results are
+      <strong>SIMULATED</strong> and are not real AI detection.
+    </div>
+    {% else %}
+    <div class="banner model">✅ <strong>MODEL MODE</strong> – predictions come from a trained model.</div>
+    {% endif %}
+
+    <!-- Upload card -->
+    <section class="card" id="upload-card">
+      <div class="drop-zone" id="drop-zone">
+        <div class="icon">📁</div>
+        <p><strong>Drag &amp; drop</strong> an image or video here</p>
+        <p class="hint">or click to browse (JPG, PNG, WEBP, MP4, AVI, MOV, MKV, WEBM – max {{ max_mb }} MB)</p>
+        <input type="file" id="file-input" accept="image/*,video/*" hidden>
+      </div>
+
+      <div id="preview-box" class="hidden">
+        <img id="preview-image" class="preview hidden" alt="Preview">
+        <video id="preview-video" class="preview hidden" controls></video>
+        <p id="file-name" class="hint"></p>
+      </div>
+
+      <p id="error-message" class="error hidden"></p>
+
+      <div class="buttons">
+        <button id="analyze-btn" class="btn primary" disabled>🔍 Analyze</button>
+        <button id="reset-btn" class="btn secondary hidden">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- Loading animation -->
+    <section class="card hidden" id="loading-card">
+      <div class="spinner"></div>
+      <p>Analyzing… please wait</p>
+    </section>
+
+    <!-- Result card -->
+    <section class="card hidden" id="result-card">
+      <span id="result-badge" class="mode-badge"></span>
+      <h2 id="result-label"></h2>
+      <p class="confidence">Confidence: <strong id="result-confidence"></strong></p>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <p id="result-explanation"></p>
+      <p id="result-frames" class="hint"></p>
+    </section>
+
+    <footer>College Mini Project – Deepfake Detection System</footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

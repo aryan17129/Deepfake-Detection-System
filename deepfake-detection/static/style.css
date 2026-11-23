@@ -1,0 +1,95 @@
+/* ---------- Basic setup ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #f1f1ff;
+  min-height: 100vh;
+  /* dark blue -> purple gradient background */
+  background: linear-gradient(135deg, #0a1128 0%, #1b1b4b 50%, #3b1d6e 100%);
+  background-attachment: fixed;
+}
+
+.container { max-width: 760px; margin: 0 auto; padding: 30px 16px; }
+.hidden { display: none !important; }
+
+/* ---------- Header ---------- */
+header { text-align: center; margin-bottom: 20px; }
+header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+.subtitle { color: #c9c9ee; line-height: 1.5; }
+
+/* ---------- Mode banner ---------- */
+.banner { padding: 12px 16px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-size: 0.95rem; }
+.banner.demo  { background: rgba(255, 193, 7, 0.15); border: 1px solid #ffc107; color: #ffe08a; }
+.banner.model { background: rgba(46, 204, 113, 0.15); border: 1px solid #2ecc71; color: #9af0c0; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Drop zone ---------- */
+.drop-zone {
+  border: 2px dashed #8b7bff;
+  border-radius: 16px;
+  padding: 36px 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.drop-zone:hover, .drop-zone.dragover { background: rgba(139, 123, 255, 0.18); transform: scale(1.02); }
+.drop-zone .icon { font-size: 2.5rem; margin-bottom: 8px; }
+.hint { color: #b5b5dd; font-size: 0.85rem; margin-top: 6px; }
+
+/* ---------- Preview ---------- */
+#preview-box { margin-top: 18px; }
+.preview { max-width: 100%; max-height: 300px; border-radius: 14px; }
+
+.error { color: #ff8a8a; margin-top: 14px; }
+
+/* ---------- Buttons ---------- */
+.buttons { margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  border: none; border-radius: 30px; padding: 12px 30px;
+  font-size: 1rem; font-weight: 600; cursor: pointer; color: white; transition: 0.25s;
+}
+.btn.primary { background: linear-gradient(90deg, #4361ee, #8b4be8); }
+.btn.secondary { background: rgba(255, 255, 255, 0.15); }
+.btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- Loading spinner ---------- */
+.spinner {
+  width: 50px; height: 50px; margin: 0 auto 14px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #8b7bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Result ---------- */
+.mode-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
+.mode-badge.demo  { background: #ffc107; color: #3a2d00; }
+.mode-badge.model { background: #2ecc71; color: #053b1e; }
+
+#result-label { font-size: 2.6rem; margin: 6px 0; }
+#result-label.real { color: #4ade80; }
+#result-label.fake { color: #ff6b6b; }
+
+.confidence { margin-bottom: 10px; }
+.bar { height: 12px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; overflow: hidden; margin: 0 auto 16px; max-width: 400px; }
+#bar-fill { height: 100%; width: 0; border-radius: 10px; background: linear-gradient(90deg, #4361ee, #8b4be8); transition: width 0.8s; }
+
+footer { text-align: center; color: #9a9ac8; font-size: 0.85rem; margin-top: 20px; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 500px) {
+  header h1 { font-size: 1.6rem; }
+  #result-label { font-size: 2rem; }
+}
